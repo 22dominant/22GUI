@@ -82,6 +82,15 @@ MainTab:CreateKeybind({
 })
 
 --- LOGIC FUNCTIONS ---
+-- Infinite Jump Logic
+UserInputService.JumpRequest:Connect(function()
+    if InfiniteJumpEnabled and LocalPlayer.Character then
+        local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+        end
+    end
+end)
 
 local function GetClosestPlayerInFOV()
     local closestPlayer = nil
